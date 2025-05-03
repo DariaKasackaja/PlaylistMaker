@@ -1,5 +1,6 @@
 package com.mifareread.playlistmaker
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -17,24 +18,20 @@ class MainActivity : AppCompatActivity() {
 
         val buttonClickListener: View.OnClickListener = object : View.OnClickListener{
             override fun onClick(p0: View?) {
-                Toast.
-                makeText(this@MainActivity, "Нажата кнопка \"Поиск\"", Toast.LENGTH_SHORT).
-                show()
+                val searchIntent = Intent(this@MainActivity, SearchActivity::class.java)
+                startActivity(searchIntent)
             }
         }
-
         buttonSearch.setOnClickListener(buttonClickListener)
 
         buttonLibrary.setOnClickListener{
-            Toast.
-            makeText(this@MainActivity, "Нажата кнопка \"Медиатека\"", Toast.LENGTH_SHORT).
-            show()
+            val libraryIntent = Intent(this, LibraryActivity::class.java)
+            startActivity(libraryIntent)
         }
 
         buttonSettings.setOnClickListener {
-            Toast.
-            makeText(this@MainActivity, "Нажата кнопка \"Настройки\"", Toast.LENGTH_SHORT).
-            show()
+            val settingsIntent = Intent(this, SettingsActivity::class.java)
+            startActivity(settingsIntent)
         }
     }
 }
