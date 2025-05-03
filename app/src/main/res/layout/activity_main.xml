@@ -1,78 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="#1A1B22"
-    android:padding="20dp">
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="Вопрос:"
-                android:textColor="#FFFFFF"
-                android:layout_gravity="start"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="2/10"
-                android:textColor="#FFFFFF"
-                android:layout_gravity="end"/>
-    </FrameLayout>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="20dp"
-        android:layout_weight="1"
-        android:scaleType="centerCrop"
-        android:src="@drawable/poster" />
-
+    android:background="@color/yp_blue"
+    android:padding="16dp">
+    
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Рейтинг этого фильма больше чем 9?"
-        android:textSize="23sp"
-        android:textColor="#FFFFFF"
-        android:gravity="center"
-        android:layout_marginHorizontal="63dp"
-        android:layout_marginTop="33dp"
-        android:layout_gravity="center"
-        android:textStyle="bold" />
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:textSize="@dimen/text_size"
+        android:textColor="@color/white"
+        android:text="@string/app_name"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="33dp"
-        android:orientation="horizontal">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingTop="24dp">
 
         <Button
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:text="Нет"
-            android:layout_marginEnd="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:backgroundTint="#FFFFFF"
-            android:textColor="#1A1B22"
-            />
+            android:backgroundTint="@color/white"
+            android:textSize="@dimen/text_size"
+            android:textColor="@color/yp_black"
+            android:text="@string/serch_name"
+            android:textAllCaps="false"
+            app:icon="@drawable/search"
+            app:iconGravity="textStart"
+            app:iconTint="@color/yp_black"
+            app:iconPadding="@dimen/icon_padding"
+            app:cornerRadius="@dimen/radius_button"/>
 
         <Button
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:text="Да"
-            android:layout_marginStart="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
             android:layout_weight="1"
-            android:backgroundTint="#FFFFFF"
-            android:textColor="#1A1B22"
-            />
+            android:backgroundTint="@color/white"
+            android:textSize="@dimen/text_size"
+            android:textColor="@color/yp_black"
+            android:text="@string/library_name"
+            android:textAllCaps="false"
+            app:icon="@drawable/library"
+            app:iconGravity="textStart"
+            app:iconTint="@color/yp_black"
+            app:iconPadding="@dimen/icon_padding"
+            app:cornerRadius="@dimen/radius_button"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/white"
+            android:textAllCaps="false"
+            android:textSize="@dimen/text_size"
+            android:textColor="@color/yp_black"
+            android:text="@string/settings_name"
+            app:icon="@drawable/settings"
+            app:iconGravity="textStart"
+            app:iconTint="@color/yp_black"
+            app:iconPadding="@dimen/icon_padding"
+            app:cornerRadius="@dimen/radius_button"/>
 
     </LinearLayout>
+
 </LinearLayout>
