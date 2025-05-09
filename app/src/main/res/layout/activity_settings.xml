@@ -3,22 +3,23 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
+    android:background="?attr/colorPrimary"
     android:orientation="vertical">
 
     <Button
         android:id="@+id/back_button"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="?attr/colorPrimary"
         android:gravity="start"
         android:text="@string/settings_name"
         android:textSize="26sp"
-        android:textColor="@color/yp_black"
+        android:textColor="?attr/colorPrimaryVariant"
         android:textAllCaps="false"
+        android:fontFamily="@font/ys_display_medium"
         app:icon="@drawable/back"
         app:iconGravity="textStart"
-        app:iconTint="@color/yp_black"/>
+        app:iconTint="?attr/colorPrimaryVariant"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,44 +34,24 @@
             android:layout_height="@dimen/item_settings_height"
             android:layout_marginTop="24dp"
             android:theme="@style/MySwitch"
-            android:checked="false"
             android:text="@string/dark_theme"
             android:textSize="@dimen/text_setting_size"
-            android:textColor="@color/black"/>
+            android:fontFamily="@font/ys_display_regular"
+            android:textColor="?attr/colorPrimaryVariant"/>
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/item_settings_height"
-            android:layout_gravity="start"
-            android:gravity="center_vertical"
+        <TextView style="@style/SettingsTextViewStyle"
             android:text="@string/share_app"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_setting_size"
             app:drawableEndCompat="@drawable/share"
-            app:drawableTint="@color/yp_gray"
             />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/item_settings_height"
-            android:layout_gravity="start"
-            android:gravity="center_vertical"
+        <TextView style="@style/SettingsTextViewStyle"
             android:text="@string/write_to_support"
-            android:textColor="@color/black"
             android:textSize="@dimen/text_setting_size"
-            app:drawableEndCompat="@drawable/support"
-            app:drawableTint="@color/yp_gray"/>
+            app:drawableEndCompat="@drawable/support"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/item_settings_height"
-            android:layout_gravity="start"
-            android:gravity="center_vertical"
+        <TextView style="@style/SettingsTextViewStyle"
             android:text="@string/user_agreement"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_setting_size"
-            app:drawableEndCompat="@drawable/forward"
-            app:drawableTint="@color/yp_gray"/>
+            app:drawableEndCompat="@drawable/forward"/>
     </LinearLayout>
 </LinearLayout>

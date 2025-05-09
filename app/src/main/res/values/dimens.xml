@@ -1,8 +1,8 @@
 <resources>
     <dimen name="medium_padding">20dp</dimen>
     <dimen name="icon_padding">1dp</dimen>
-    <dimen name="text_size">22sp</dimen>
-    <dimen name="text_setting_size">19sp</dimen>
+    <dimen name="text_size">24p</dimen>
+    <dimen name="text_setting_size">20sp</dimen>
     <dimen name="radius_button">16dp</dimen>
-    <dimen name="item_settings_height">61dp</dimen>
+    <dimen name="item_settings_height">60dp</dimen>
 </resources>
