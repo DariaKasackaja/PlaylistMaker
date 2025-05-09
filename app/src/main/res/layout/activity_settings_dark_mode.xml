@@ -39,82 +39,39 @@
             android:textColor="@color/white"/>
 
 
-        <LinearLayout
+
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:layout_height="@dimen/item_settings_height"
+            android:layout_gravity="start"
+            android:gravity="center_vertical"
+            android:text="@string/share_app"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_setting_size"
+            app:drawableEndCompat="@drawable/share"
+            app:drawableTint="@color/white"
+            />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="@dimen/item_settings_height"
-                android:layout_weight="9"
-                android:layout_gravity="start"
-                android:gravity="center_vertical"
-                android:text="@string/share_app"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_setting_size"/>
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_gravity="end"
-                android:scaleType="center"
-                android:src="@drawable/share"
-                app:tint="@color/white"/>
-        </LinearLayout>
-
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="@dimen/item_settings_height"
+            android:layout_gravity="start"
+            android:gravity="center_vertical"
+            android:text="@string/write_to_support"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_setting_size"
+            app:drawableEndCompat="@drawable/support"
+            app:drawableTint="@color/white"/>
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="@dimen/item_settings_height"
-                android:layout_weight="9"
-                android:layout_gravity="start"
-                android:gravity="center_vertical"
-                android:text="@string/write_to_support"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_setting_size"/>
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_gravity="end"
-                android:scaleType="center"
-                android:src="@drawable/support"
-                app:tint="@color/white"
-                />
-        </LinearLayout>
-
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="@dimen/item_settings_height"
-                android:layout_weight="9"
-                android:layout_gravity="start"
-                android:gravity="center_vertical"
-                android:text="@string/user_agreement"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_setting_size"/>
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_gravity="end"
-                android:scaleType="center"
-                android:src="@drawable/forward"
-                app:tint="@color/white"
-                />
-        </LinearLayout>
+            android:layout_height="@dimen/item_settings_height"
+            android:layout_gravity="start"
+            android:gravity="center_vertical"
+            android:text="@string/user_agreement"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_setting_size"
+            app:drawableEndCompat="@drawable/forward"
+            app:drawableTint="@color/white"/>
     </LinearLayout>
 </LinearLayout>
