@@ -41,16 +41,19 @@
 
 
         <TextView style="@style/SettingsTextViewStyle"
+            android:id="@+id/share_button"
             android:text="@string/share_app"
             app:drawableEndCompat="@drawable/share"
             />
 
         <TextView style="@style/SettingsTextViewStyle"
+            android:id="@+id/support_button"
             android:text="@string/write_to_support"
             android:textSize="@dimen/text_setting_size"
             app:drawableEndCompat="@drawable/support"/>
 
         <TextView style="@style/SettingsTextViewStyle"
+            android:id="@+id/forward_button"
             android:text="@string/user_agreement"
             app:drawableEndCompat="@drawable/forward"/>
     </LinearLayout>
