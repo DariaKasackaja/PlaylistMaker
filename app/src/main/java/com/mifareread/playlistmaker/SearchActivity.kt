@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity
 
 class SearchActivity:AppCompatActivity() {
 
+    private var searchString:String = STRING_DEF
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
@@ -21,7 +23,7 @@ class SearchActivity:AppCompatActivity() {
         val searchEditText = findViewById<EditText>(R.id.searchEditText)
         val buttonBack = findViewById<Button>(R.id.search_button)
 
-
+        searchEditText.setText(searchString)
 
         buttonClear.setOnClickListener{ view ->
             searchEditText.setText("")
@@ -39,12 +41,13 @@ class SearchActivity:AppCompatActivity() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                val test = p0.toString()
-
+                if (p0.isNullOrEmpty()) {}
+                else{
+                    searchString = p0.toString()
+                }
                 buttonClear.visibility= if (p0.isNullOrEmpty())
-                { View.GONE }
-                else{View.VISIBLE}
-
+                    { View.GONE }
+                    else{View.VISIBLE}
             }
 
             override fun afterTextChanged(p0: Editable?) {
@@ -52,6 +55,21 @@ class SearchActivity:AppCompatActivity() {
             }
         }
         searchEditText.addTextChangedListener(searchTextWatcher)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(SEARCH_STRING, searchString)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        searchString = savedInstanceState.getString(SEARCH_STRING, STRING_DEF)
+    }
+
+    companion object{
+        const val SEARCH_STRING = "SEARCH_STRING"
+        const val  STRING_DEF = ""
     }
 
 }
