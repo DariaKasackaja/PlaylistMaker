@@ -6,20 +6,9 @@
     android:background="?attr/colorPrimary"
     android:orientation="vertical">
 
-    <Button
+    <Button style="@style/ButtonBackStyle"
         android:id="@+id/back_button"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:backgroundTint="?attr/colorPrimary"
-        android:gravity="start"
-        android:text="@string/settings_name"
-        android:textSize="26sp"
-        android:textColor="?attr/colorPrimaryVariant"
-        android:textAllCaps="false"
-        android:fontFamily="@font/ys_display_medium"
-        app:icon="@drawable/back"
-        app:iconGravity="textStart"
-        app:iconTint="?attr/colorPrimaryVariant"/>
+        android:text="@string/settings_name"/>
 
     <LinearLayout
         android:layout_width="match_parent"

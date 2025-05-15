@@ -4,5 +4,8 @@
         <item name="colorPrimary">@color/yp_black</item>
         <item name="colorPrimaryVariant">@color/white</item>
         <item name="colorSecondary">@color/yp_black</item>
+        <item name="colorControlNormal">@color/white</item>
     </style>
+
+    <style name="Theme.PlaylistMaker" parent="Base.Theme.PlaylistMaker" />
 </resources>
