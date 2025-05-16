@@ -64,4 +64,7 @@
         <item name="android:background">@drawable/rectangle_edit</item>
     </style>
 
+    <style name="UseColorTextStyle">
+        <item name="tint">@color/yp_gray</item>
+    </style>
 </resources>

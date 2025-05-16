@@ -17,7 +17,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp">
 
         <EditText style="@style/EditTextPlaylistStyle"
             android:layout_width="0dp"
@@ -26,15 +28,17 @@
             android:textCursorDrawable="@drawable/color_cursor"
             android:id="@+id/searchEditText"
             android:inputType="text"
-            android:hint="@string/search_name" />
+            android:hint="@string/search_name"/>
 
-        <ImageView
+        <ImageView style="@style/UseColorTextStyle"
             android:id="@+id/clearIcon"
+            android:contentDescription="@null"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@android:drawable/ic_menu_close_clear_cancel"
-            android:visibility="gone" />
+            android:src="@drawable/clear"
+            android:gravity="center_vertical"
+            android:visibility="gone"/>
 
     </LinearLayout>
 </LinearLayout>

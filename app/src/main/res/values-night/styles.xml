@@ -63,4 +63,8 @@
     <style name="BackgroundRectangleStyle">
         <item name="android:background">@drawable/rectangle_edit_night</item>
     </style>
+
+    <style name="UseColorTextStyle">
+        <item name="tint">@color/yp_black</item>
+    </style>
 </resources>
