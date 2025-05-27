@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.appbar.MaterialToolbar
 
 class SearchActivity:AppCompatActivity() {
 
@@ -21,17 +22,16 @@ class SearchActivity:AppCompatActivity() {
 
         val buttonClear = findViewById<ImageView>(R.id.clearIcon)
         val searchEditText = findViewById<EditText>(R.id.searchEditText)
-        val buttonBack = findViewById<Button>(R.id.search_button)
+        val toolbarBack = findViewById<MaterialToolbar>(R.id.search_button)
 
         searchEditText.setText(searchString)
 
         buttonClear.setOnClickListener{ view ->
             searchEditText.setText("")
-            val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
-            inputMethodManager?.hideSoftInputFromWindow(view.windowToken, 0)
+            hideKeyboard(view)
         }
 
-        buttonBack.setOnClickListener {
+        toolbarBack.setOnClickListener {
             finish()
         }
 
@@ -55,6 +55,11 @@ class SearchActivity:AppCompatActivity() {
             }
         }
         searchEditText.addTextChangedListener(searchTextWatcher)
+    }
+
+    private fun hideKeyboard(view : View){
+        val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+        inputMethodManager?.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

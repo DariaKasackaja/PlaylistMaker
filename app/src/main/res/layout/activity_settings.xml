@@ -6,9 +6,10 @@
     android:background="?attr/colorPrimary"
     android:orientation="vertical">
 
-    <Button style="@style/ButtonBackStyle"
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/back_button"
-        android:text="@string/settings_name"/>
+        style="@style/ToolbarBack"
+        app:title="@string/settings_name"/>
 
     <LinearLayout
         android:layout_width="match_parent"

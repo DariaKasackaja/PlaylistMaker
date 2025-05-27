@@ -6,24 +6,24 @@
     android:background="?attr/colorPrimary"
     android:orientation="vertical">
 
-    <Button
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/search_button"
-        style="@style/ButtonBackStyle"
-        android:text="@string/search_name" />
+        style="@style/ToolbarBack"
+        app:title="@string/search_name"/>
+
 
     <LinearLayout style="@style/BackgroundRectangleStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="@dimen/layout_margin"
+        android:layout_marginEnd="@dimen/layout_margin"
         android:orientation="horizontal"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp">
+        android:paddingStart="@dimen/layout_search_padding"
+        android:paddingEnd="@dimen/layout_search_padding">
 
         <EditText style="@style/EditTextPlaylistStyle"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textCursorDrawable="@drawable/color_cursor"
             android:id="@+id/searchEditText"

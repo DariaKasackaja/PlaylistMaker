@@ -30,13 +30,13 @@
 
         <Button style="@style/ButtonStyleWhite"
             android:id="@+id/library"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/button_top"
             android:text="@string/library_name"
             app:icon="@drawable/library" />
 
         <Button style="@style/ButtonStyleWhite"
             android:id="@+id/settings"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/button_top"
             android:text="@string/settings_name"
             app:icon="@drawable/settings"/>
 
