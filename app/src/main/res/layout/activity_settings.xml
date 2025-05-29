@@ -3,22 +3,13 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
+    android:background="?attr/colorPrimary"
     android:orientation="vertical">
 
-    <Button
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/back_button"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:backgroundTint="@color/white"
-        android:gravity="start"
-        android:text="@string/settings_name"
-        android:textSize="26sp"
-        android:textColor="@color/yp_black"
-        android:textAllCaps="false"
-        app:icon="@drawable/back"
-        app:iconGravity="textStart"
-        app:iconTint="@color/yp_black"/>
+        style="@style/ToolbarBack"
+        app:title="@string/settings_name"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,88 +24,27 @@
             android:layout_height="@dimen/item_settings_height"
             android:layout_marginTop="24dp"
             android:theme="@style/MySwitch"
-            android:checked="false"
             android:text="@string/dark_theme"
             android:textSize="@dimen/text_setting_size"
-            android:textColor="@color/black"/>
+            android:fontFamily="@font/ys_display_regular"
+            android:textColor="?attr/colorPrimaryVariant"/>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+        <TextView style="@style/SettingsTextViewStyle"
+            android:id="@+id/share_button"
+            android:text="@string/share_app"
+            app:drawableEndCompat="@drawable/share"
+            />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="@dimen/item_settings_height"
-                android:layout_weight="9"
-                android:layout_gravity="start"
-                android:gravity="center_vertical"
-                android:text="@string/share_app"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_setting_size"/>
+        <TextView style="@style/SettingsTextViewStyle"
+            android:id="@+id/support_button"
+            android:text="@string/write_to_support"
+            android:textSize="@dimen/text_setting_size"
+            app:drawableEndCompat="@drawable/support"/>
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_gravity="end"
-                android:scaleType="center"
-                android:src="@drawable/share"
-                app:tint="@color/yp_gray"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="@dimen/item_settings_height"
-                android:layout_weight="9"
-                android:layout_gravity="start"
-                android:gravity="center_vertical"
-                android:text="@string/write_to_support"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_setting_size"/>
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_gravity="end"
-                android:scaleType="center"
-                android:src="@drawable/support"
-                app:tint="@color/yp_gray"
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="@dimen/item_settings_height"
-                android:layout_weight="9"
-                android:layout_gravity="start"
-                android:gravity="center_vertical"
-                android:text="@string/user_agreement"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_setting_size"/>
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_gravity="end"
-                android:scaleType="center"
-                android:src="@drawable/forward"
-                app:tint="@color/yp_gray"
-                />
-        </LinearLayout>
+        <TextView style="@style/SettingsTextViewStyle"
+            android:id="@+id/forward_button"
+            android:text="@string/user_agreement"
+            app:drawableEndCompat="@drawable/forward"/>
     </LinearLayout>
 </LinearLayout>
