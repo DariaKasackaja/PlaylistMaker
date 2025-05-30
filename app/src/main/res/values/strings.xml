@@ -13,4 +13,7 @@
     <string name="forward_url">https://yandex.ru/legal/practicum_offer/</string>
     <string name="share_question">Поделиться ссылкой?</string>
     <string name="share_text">"https://practicum.yandex.ru/profile/android-developer-plus/"</string>
+    <string name="track_title">Название альбома</string>
+    <string name="track_artist">Исполнитель</string>
+    <string name="track_time">время</string>
 </resources>
