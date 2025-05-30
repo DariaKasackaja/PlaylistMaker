@@ -4,11 +4,14 @@
     <dimen name="text_size">24sp</dimen>
     <dimen name="text_setting_size">20sp</dimen>
     <dimen name="radius_button">16dp</dimen>
-    <dimen name="item_settings_height">60dp</dimen>
+    <dimen name="item_settings_height">61dp</dimen>
     <dimen name="button_top">16dp</dimen>
     <dimen name="layout_margin">16dp</dimen>
     <dimen name="layout_search_padding">12dp</dimen>
     <dimen name="edit_height">36dp</dimen>
     <dimen name="edit_text_size">16sp</dimen>
     <dimen name="edit_text_radius">8dp</dimen>
+    <dimen name="track_view_margin_hor">13dp</dimen>
+    <dimen name="track_view_margin_ver">8dp</dimen>
+    <dimen name="little_text_size">12sp</dimen>
 </resources>

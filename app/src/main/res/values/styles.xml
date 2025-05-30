@@ -85,4 +85,9 @@
     <style name="UseColorTextStyle">
         <item name="tint">@color/yp_gray</item>
     </style>
+
+    <style name="textGray">
+        <item name="android:textColor">@color/yp_gray</item>
+        <item name="tint">@color/yp_gray</item>
+    </style>
 </resources>
