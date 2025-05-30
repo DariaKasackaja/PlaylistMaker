@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/item_settings_height">
 
@@ -11,7 +12,8 @@
         android:paddingEnd="@dimen/track_view_margin_hor"
         android:paddingTop="@dimen/track_view_margin_ver"
         android:paddingBottom="@dimen/track_view_margin_ver"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints">
 
         <ImageView
             android:id="@+id/cover"
@@ -30,6 +32,8 @@
                 android:layout_weight="1"
                 android:paddingEnd="4dp"
                 android:paddingStart="4dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -46,7 +50,6 @@
                 <LinearLayout
                     android:layout_height="match_parent"
                     android:layout_width="match_parent"
-                    android:gravity="center"
                     android:orientation="horizontal">
 
                     <TextView
@@ -54,6 +57,7 @@
                         style="@style/textGray"
                         android:maxLines="1"
                         android:ellipsize="end"
+                        android:singleLine="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/track_artist"
@@ -72,7 +76,7 @@
                     <TextView
                         android:id="@+id/track_time"
                         style="@style/textGray"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/track_time"
                         android:textSize="@dimen/little_text_size"

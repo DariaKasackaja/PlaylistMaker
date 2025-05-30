@@ -38,14 +38,6 @@ class SearchActivity:AppCompatActivity() {
         Track("Sweet Child O'Mine",
             "Roses",
             "5:03",
-            "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/a0/4d/c4/a04dc484-03cc-02aa-fa82-5334fcb4bc16/18UMGIM24878.rgb.jpg/100x100bb.jpg"),
-        Track("Sweet Child O'Mine",
-            "Rosesyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy123214214141242142124141",
-            "5:03",
-            "s5-ssl.mzstatic.com/image/thumb/Music125/v4/a0/4d/c4/a04dc484-03cc-02aa-fa82-5334fcb4bc16/18UMGIM24878.rgb.jpg/100x100bb.jpg"),
-        Track("Sweet Child O'Mineoiuoiuouwoieuwrywrywrowyoerywowyeowyrowyorwyowy",
-            "Roses",
-            "5:03",
             "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/a0/4d/c4/a04dc484-03cc-02aa-fa82-5334fcb4bc16/18UMGIM24878.rgb.jpg/100x100bb.jpg"))
 
     override fun onCreate(savedInstanceState: Bundle?) {
