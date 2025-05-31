@@ -16,4 +16,7 @@
     <string name="track_title">Название альбома</string>
     <string name="track_artist">Исполнитель</string>
     <string name="track_time">время</string>
+    <string name="update">Обновить</string>
+    <string name="search_empty">Ничего не нашлось</string>
+    <string name="connection_problem">Проблемы со связью\n\nЗагрузка не удалась. Проверьте\nодключение к интернету</string>
 </resources>

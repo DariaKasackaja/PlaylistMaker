@@ -1,5 +1,6 @@
 package com.mifareread.playlistmaker
 
+import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.widget.ImageView
@@ -7,6 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class TrackViewHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
 
@@ -24,7 +27,14 @@ class TrackViewHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
                 .into(cover)
 
         trackTittle.text = track.trackName
-        trackTime.text = track.trackTime
+        val time = if(track.trackTimeMillis.isNullOrEmpty()){
+            ""
+        }
+        else{   SimpleDateFormat("mm:ss", Locale.getDefault())
+                        .format(track.trackTimeMillis.toInt())
+        }
+
+        trackTime.text =  time
         trackArtist.text = track.artistName
 
     }

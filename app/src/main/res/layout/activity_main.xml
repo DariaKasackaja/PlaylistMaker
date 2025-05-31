@@ -23,8 +23,9 @@
         android:orientation="vertical"
         android:paddingTop="24dp">
 
-        <Button style="@style/ButtonStyleWhite"
+        <Button
             android:id="@+id/search"
+            style="@style/ButtonStyleWhite"
             android:text="@string/search_name"
             app:icon="@drawable/search" />
 
