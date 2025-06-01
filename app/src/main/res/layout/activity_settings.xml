@@ -19,6 +19,7 @@
         android:paddingEnd="10dp">
 
         <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/theme_switcher"
             android:layout_width="match_parent"
             android:background="?attr/selectableItemBackground"
             android:layout_height="@dimen/item_settings_height"
