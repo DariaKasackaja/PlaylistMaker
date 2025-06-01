@@ -4,9 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.text.Editable
-import android.text.Layout
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
@@ -15,10 +13,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
 import retrofit2.Call
@@ -188,9 +183,6 @@ class SearchActivity:AppCompatActivity() {
                 connectProblemImage.visibility = View.VISIBLE
                 placeholderText.text = getString(R.string.connection_problem)
                 placeholderButton.visibility = View.VISIBLE
-            }
-            else ->{
-                Log.i("PLAYLIST_MAKER", "error message type")
             }
         }
     }
