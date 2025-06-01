@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 class TracksAdapter():
     RecyclerView.Adapter<TrackViewHolder>() {
 
-        var tracks = ArrayList<Track>()
+        var tracks = mutableListOf<Track>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrackViewHolder {
         val view =LayoutInflater.from(parent.context).inflate(R.layout.track_view, parent,false)

@@ -45,7 +45,7 @@ class SearchActivity:AppCompatActivity() {
     private lateinit var placeholderButton: Button
     private val ITunesService = retrofit.create(ITunesApi::class.java)
 
-    private val tracks = ArrayList<Track>()
+    private val tracks = mutableListOf<Track>()
     private val adapter = TracksAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,7 +61,6 @@ class SearchActivity:AppCompatActivity() {
         connectProblemImage = findViewById(R.id.connection_problem)
         placeholderButton = findViewById(R.id.placeholder_button)
         placeholderText = findViewById(R.id.placeholder_text)
-        //recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         searchEditText.setText(searchString)
         searchEditText.setOnEditorActionListener { _, actionId, _ ->
@@ -140,40 +139,41 @@ class SearchActivity:AppCompatActivity() {
                         when(response.code()){
                             200 -> {
                                 tracks.clear()
-                                if(response.body()?.results?.isNotEmpty() == true){
-                                    tracks.addAll(response.body()?.results!!)
+                                val listTracks = response.body()?.results!!
 
+                                if(listTracks.isNotEmpty()){
+                                    tracks.addAll(listTracks)
                                 }
                                 adapter.notifyDataSetChanged()
 
                                 if( tracks.isEmpty() ){
-                                    showMessage(1)
+                                    showMessage(MessageResponse.ERROR_EMPTY)
                                 }
                                 else{
-                                    showMessage(0)
+                                    showMessage(MessageResponse.ERROR_OK)
                                 }
                             }
                             else->{
-                                showMessage(2)
+                                showMessage(MessageResponse.ERROR_CONNECTION_PROBLEM)
                             }
                         }
 
                     }
 
                     override fun onFailure(call: Call<TracksResponse>, t: Throwable) {
-                        showMessage(2)
+                        showMessage(MessageResponse.ERROR_CONNECTION_PROBLEM)
 
                     }
                 })
         }
     }
 
-    private fun showMessage(type: Int) {
+    private fun showMessage(type: MessageResponse) {
         when(type){
-            0 -> {
+            MessageResponse.ERROR_OK -> {
                 placeholder.visibility = View.GONE
             }
-            1 ->{
+            MessageResponse.ERROR_EMPTY ->{
                 clean()
                 placeholder.visibility = View.VISIBLE
                 emptyImage.visibility = View.VISIBLE
@@ -181,7 +181,7 @@ class SearchActivity:AppCompatActivity() {
                 placeholderText.text = getString(R.string.search_empty)
                 placeholderButton.visibility = View.GONE
             }
-            2 -> {
+            MessageResponse.ERROR_CONNECTION_PROBLEM -> {
                 clean()
                 placeholder.visibility = View.VISIBLE
                 emptyImage.visibility = View.GONE
@@ -205,6 +205,12 @@ class SearchActivity:AppCompatActivity() {
     companion object{
         const val SEARCH_STRING = "SEARCH_STRING"
         const val  STRING_DEF = ""
+    }
+
+    enum class MessageResponse {
+        ERROR_OK,                     //успешный ответ
+        ERROR_EMPTY,                  //пустой список
+        ERROR_CONNECTION_PROBLEM      //проблемы со связью
     }
 
 }
