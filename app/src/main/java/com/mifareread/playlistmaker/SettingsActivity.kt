@@ -3,9 +3,9 @@ package com.mifareread.playlistmaker
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SwitchCompat
 import com.google.android.material.appbar.MaterialToolbar
 
 class SettingsActivity: AppCompatActivity() {
@@ -13,12 +13,6 @@ class SettingsActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
-
-        val themeSwitcher = findViewById<SwitchCompat>(R.id.theme_switcher)
-        themeSwitcher.isChecked = (applicationContext as App).darkTheme
-        themeSwitcher.setOnCheckedChangeListener { switcher, checked ->
-            ( applicationContext as App).switchTheme( checked )
-        }
 
         val toolbarBack = findViewById<MaterialToolbar>(R.id.back_button)
         toolbarBack.setOnClickListener { finish() }
