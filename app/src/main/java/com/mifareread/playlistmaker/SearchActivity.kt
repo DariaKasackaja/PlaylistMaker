@@ -2,6 +2,8 @@ package com.mifareread.playlistmaker
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.SharedPreferences
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -16,6 +18,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -38,10 +42,15 @@ class SearchActivity:AppCompatActivity() {
     private lateinit var connectProblemImage : ImageView
     private lateinit var placeholderText : TextView
     private lateinit var placeholderButton: Button
+    private lateinit var listenerPreference : OnSharedPreferenceChangeListener
     private val ITunesService = retrofit.create(ITunesApi::class.java)
 
     private val tracks = mutableListOf<Track>()
-    private val adapter = TracksAdapter()
+    private val adapter = TracksAdapter {
+        selectTrack( it )
+    }
+
+    private val adapterSelectTracks = TracksSelectedAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +60,9 @@ class SearchActivity:AppCompatActivity() {
         val searchEditText = findViewById<EditText>(R.id.searchEditText)
         val toolbarBack = findViewById<MaterialToolbar>(R.id.search_button)
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        val searchHistoryLayout = findViewById<LinearLayout>(R.id.search_history)
+        val recyclerSelectedTacksView = findViewById<RecyclerView>(R.id.searchHistoryView)
+        val selectHistoryButton = findViewById<Button>(R.id.clear_history_button)
         placeholder = findViewById(R.id.placeholder)
         emptyImage = findViewById(R.id.empty_image)
         connectProblemImage = findViewById(R.id.connection_problem)
@@ -94,6 +106,15 @@ class SearchActivity:AppCompatActivity() {
                 buttonClear.visibility= if (p0.isNullOrEmpty())
                     { View.GONE }
                     else{View.VISIBLE}
+
+                if( searchEditText.hasFocus() && p0.isNullOrEmpty() ) {
+                    searchHistoryLayout.visibility = View.VISIBLE
+                    recyclerView.visibility = View.GONE
+                }
+                else{
+                    searchHistoryLayout.visibility = View.GONE
+                    recyclerView.visibility = View.VISIBLE
+                }
             }
 
             override fun afterTextChanged(p0: Editable?) {
@@ -102,9 +123,49 @@ class SearchActivity:AppCompatActivity() {
         }
         searchEditText.addTextChangedListener(searchTextWatcher)
 
+        searchEditText.setOnFocusChangeListener { view, focus ->
+            if( focus && searchEditText.text.isEmpty() ){
+                searchHistoryLayout.visibility = View.VISIBLE
+                recyclerView.visibility = View.GONE
+            }
+            else{
+                searchHistoryLayout.visibility = View.GONE
+                recyclerView.visibility = View.VISIBLE
+            }
+        }
+
         adapter.tracks = tracks
         recyclerView.adapter = adapter
 
+        val sharedPref =  getSharedPreferences(PLAYLIST_PREFERENCES, MODE_PRIVATE)
+        listenerPreference = OnSharedPreferenceChangeListener{ sharedPreferences, key ->
+            if( key == SEARCH_HISTORY_KEY){
+                adapterSelectTracks.tracks.clear()
+                val json = sharedPreferences.getString(SEARCH_HISTORY_KEY, null)
+                if (json != null && json.isNotEmpty()) {
+                    val tracksSelected = createTracksFromJson(json)
+                    tracksSelected.reverse()
+                    adapterSelectTracks.tracks = tracksSelected
+                }
+                adapterSelectTracks.notifyDataSetChanged()
+            }
+        }
+
+        val json = sharedPref.getString(SEARCH_HISTORY_KEY, null)
+        if (json != null && json.isNotEmpty()) {
+            val tracksSelected = createTracksFromJson(json)
+            tracksSelected.reverse()
+            adapterSelectTracks.tracks = tracksSelected
+        }
+
+        recyclerSelectedTacksView.adapter = adapterSelectTracks
+        sharedPref.registerOnSharedPreferenceChangeListener(listenerPreference)
+
+        selectHistoryButton.setOnClickListener {
+            sharedPref.edit()
+                .remove(SEARCH_HISTORY_KEY)
+                .apply()
+        }
     }
 
     private fun hideKeyboard(view : View){
@@ -120,6 +181,43 @@ class SearchActivity:AppCompatActivity() {
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         searchString = savedInstanceState.getString(SEARCH_STRING, STRING_DEF)
+    }
+
+    private fun selectTrack( track: Track ){
+        var selectTracks = mutableListOf<Track>()
+        val sharedPreferences =  getSharedPreferences(PLAYLIST_PREFERENCES, MODE_PRIVATE)
+        val json = sharedPreferences.getString(SEARCH_HISTORY_KEY, null)
+        if (json != null && json.isNotEmpty()) {
+            selectTracks = createTracksFromJson(json)
+
+        }
+
+        for (tmpTrack in selectTracks) {
+            if (track.trackId == tmpTrack.trackId) {
+                selectTracks.remove(tmpTrack)
+                break
+            }
+        }
+
+        if( selectTracks.size == 10 )
+            selectTracks.removeAt(0)
+
+        selectTracks.add(track)
+
+        sharedPreferences.edit()
+           .putString(SEARCH_HISTORY_KEY, createJsonFromTracks(selectTracks))
+           .apply()
+
+
+    }
+
+    private fun createJsonFromTracks( listTacks: MutableList<Track>) : String{
+        return Gson().toJson( listTacks )
+    }
+
+    private fun createTracksFromJson( jsonStr : String ) : MutableList<Track>{
+        val type = object : TypeToken<MutableList<Track>>(){}.type
+        return Gson().fromJson(jsonStr, type)
     }
 
     private fun search(){
@@ -186,7 +284,6 @@ class SearchActivity:AppCompatActivity() {
             }
         }
     }
-
 
     @SuppressLint("NotifyDataSetChanged")
     private fun clean(){
