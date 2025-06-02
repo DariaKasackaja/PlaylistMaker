@@ -28,7 +28,9 @@
             android:textCursorDrawable="@drawable/color_cursor"
             android:id="@+id/searchEditText"
             android:inputType="text"
-            android:hint="@string/search_name"/>
+            android:hint="@string/search_name"
+            android:imeOptions="actionDone"
+            android:singleLine="true"/>
 
         <ImageView style="@style/UseColorTextStyle"
             android:id="@+id/clearIcon"
@@ -42,11 +44,90 @@
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_marginTop="@dimen/button_top"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        android:layout_marginTop="@dimen/button_top">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical" />
+
+
+        <LinearLayout
+            android:id="@+id/placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <ImageView
+                style="@style/empty_image"
+                android:id="@+id/empty_image"
+                android:visibility="gone"/>
+
+            <ImageView
+                style="@style/connection_problem"
+                android:id="@+id/connection_problem"
+                android:visibility="gone"/>
+
+            <TextView
+                style="@style/PlaceholderTextStyle"
+                android:id="@+id/placeholder_text"
+                android:layout_marginTop="@dimen/layout_margin"
+                android:layout_marginStart="@dimen/layout_margin2"
+                android:layout_marginEnd="@dimen/layout_margin2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/connection_problem"
+                />
+
+            <Button
+                style="@style/buttonBlack"
+                android:layout_marginTop="@dimen/layout_margin2"
+                android:id="@+id/placeholder_button"
+                android:text="@string/update"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/search_history"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/PlaceholderTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/search_history_tittle"
+                android:layout_marginTop="@dimen/layout_margin"
+                android:layout_marginStart="@dimen/layout_margin"
+                android:layout_marginEnd="@dimen/layout_margin"
+                android:layout_marginBottom="@dimen/layout_margin"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/searchHistoryView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="vertical"/>
+
+            <Button
+                style="@style/buttonBlack"
+                android:layout_marginTop="@dimen/layout_margin2"
+                android:id="@+id/clear_history_button"
+                android:text="@string/clear_search_history"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
 </LinearLayout>
