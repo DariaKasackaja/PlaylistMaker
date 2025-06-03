@@ -3,6 +3,7 @@ package com.mifareread.playlistmaker
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.os.Bundle
 import android.text.Editable
@@ -43,6 +44,8 @@ class SearchActivity:AppCompatActivity() {
     private lateinit var placeholderText : TextView
     private lateinit var placeholderButton: Button
     private lateinit var listenerPreference : OnSharedPreferenceChangeListener
+    private lateinit var searchHistoryLayout : LinearLayout
+    private lateinit var recyclerView : RecyclerView
     private val ITunesService = retrofit.create(ITunesApi::class.java)
 
     private val tracks = mutableListOf<Track>()
@@ -61,8 +64,8 @@ class SearchActivity:AppCompatActivity() {
         val buttonClear = findViewById<ImageView>(R.id.clearIcon)
         val searchEditText = findViewById<EditText>(R.id.searchEditText)
         val toolbarBack = findViewById<MaterialToolbar>(R.id.search_button)
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        val searchHistoryLayout = findViewById<LinearLayout>(R.id.search_history)
+        recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        searchHistoryLayout = findViewById(R.id.search_history)
         val recyclerSelectedTacksView = findViewById<RecyclerView>(R.id.searchHistoryView)
         val selectHistoryButton = findViewById<Button>(R.id.clear_history_button)
         placeholder = findViewById(R.id.placeholder)
@@ -109,14 +112,8 @@ class SearchActivity:AppCompatActivity() {
                     { View.GONE }
                     else{View.VISIBLE}
 
-                if( searchEditText.hasFocus() && p0.isNullOrEmpty() ) {
-                    searchHistoryLayout.visibility = View.VISIBLE
-                    recyclerView.visibility = View.GONE
-                }
-                else{
-                    searchHistoryLayout.visibility = View.GONE
-                    recyclerView.visibility = View.VISIBLE
-                }
+
+                isSearchHistoryView(searchEditText.hasFocus(), p0.toString())
             }
 
             override fun afterTextChanged(p0: Editable?) {
@@ -126,14 +123,7 @@ class SearchActivity:AppCompatActivity() {
         searchEditText.addTextChangedListener(searchTextWatcher)
 
         searchEditText.setOnFocusChangeListener { view, focus ->
-            if( focus && searchEditText.text.isEmpty() ){
-                searchHistoryLayout.visibility = View.VISIBLE
-                recyclerView.visibility = View.GONE
-            }
-            else{
-                searchHistoryLayout.visibility = View.GONE
-                recyclerView.visibility = View.VISIBLE
-            }
+            isSearchHistoryView(focus, searchEditText.text.toString())
         }
 
         adapter.tracks = tracks
@@ -167,6 +157,9 @@ class SearchActivity:AppCompatActivity() {
             sharedPref.edit()
                 .remove(SEARCH_HISTORY_KEY)
                 .apply()
+
+            isSearchHistoryView(searchEditText.hasFocus(), searchEditText.text.toString())
+
         }
     }
 
@@ -185,14 +178,21 @@ class SearchActivity:AppCompatActivity() {
         searchString = savedInstanceState.getString(SEARCH_STRING, STRING_DEF)
     }
 
-    private fun selectTrack( track: Track ){
+    private fun getSelectedTrackFromPreference(sharedPreferences
+                                               :SharedPreferences)
+    :MutableList<Track> {
         var selectTracks = mutableListOf<Track>()
-        val sharedPreferences =  getSharedPreferences(PLAYLIST_PREFERENCES, MODE_PRIVATE)
         val json = sharedPreferences.getString(SEARCH_HISTORY_KEY, null)
         if (json != null && json.isNotEmpty()) {
             selectTracks = createTracksFromJson(json)
 
         }
+
+        return selectTracks
+    }
+    private fun selectTrack( track: Track ){
+        val sharedPreferences =  getSharedPreferences(PLAYLIST_PREFERENCES, MODE_PRIVATE)
+        val selectTracks = getSelectedTrackFromPreference(sharedPreferences)
 
         for (tmpTrack in selectTracks) {
             if (track.trackId == tmpTrack.trackId) {
@@ -266,6 +266,20 @@ class SearchActivity:AppCompatActivity() {
 
                     }
                 })
+        }
+    }
+
+    private fun isSearchHistoryView(focus : Boolean, text:String){
+        if( focus && text.isEmpty() ){
+            val sharedPreferences =  getSharedPreferences(PLAYLIST_PREFERENCES, MODE_PRIVATE)
+            val selectTracks = getSelectedTrackFromPreference(sharedPreferences)
+            searchHistoryLayout.visibility =if(selectTracks.isEmpty()){View.GONE}
+            else{ View.VISIBLE }
+            recyclerView.visibility = View.GONE
+        }
+        else{
+            searchHistoryLayout.visibility = View.GONE
+            recyclerView.visibility = View.VISIBLE
         }
     }
 
