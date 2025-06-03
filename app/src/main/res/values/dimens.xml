@@ -11,6 +11,7 @@
     <dimen name="layout_margin2">24dp</dimen>
     <dimen name="layout_margin3">12dp</dimen>
     <dimen name="layout_margin4">32dp</dimen>
+    <dimen name="layout_margin5">8dp</dimen>
     <dimen name="layout_search_padding">12dp</dimen>
     <dimen name="edit_height">36dp</dimen>
     <dimen name="edit_text_size">16sp</dimen>

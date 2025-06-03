@@ -42,7 +42,8 @@
         app:layout_constraintStart_toEndOf="@+id/leftBorder"
         app:layout_constraintEnd_toStartOf="@+id/rightBorder"
         app:layout_constraintTop_toTopOf="parent"
-        android:backgroundTint="?attr/colorPrimary"/>
+        android:backgroundTint="?attr/colorPrimary"
+        />
 
     <TextView
         android:id="@+id/audioTrackTittle"
@@ -242,7 +243,9 @@
         app:layout_constraintTop_toBottomOf="@id/genreTittle"
         app:layout_constraintStart_toStartOf="@id/leftBorderText"
         app:layout_constraintEnd_toStartOf="@id/countryValue"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:text="@string/country_track_name"
+        android:layout_marginBottom="@dimen/medium_padding"
         />
 
     <TextView
@@ -254,6 +257,8 @@
         app:layout_constraintStart_toEndOf="@id/countryTittle"
         app:layout_constraintEnd_toStartOf="@id/rightBorderText"
         app:layout_constraintBaseline_toBaselineOf="@id/countryTittle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/medium_padding"
         android:gravity="center_vertical|end"
         />
 

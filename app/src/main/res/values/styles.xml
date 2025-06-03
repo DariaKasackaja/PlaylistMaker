@@ -128,6 +128,8 @@
         <item name="layout_constraintWidth_default">spread</item>
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>
+        <item name="android:paddingBottom">@dimen/layout_margin5</item>
+        <item name="android:paddingTop">@dimen/layout_margin5</item>
     </style>
 
     <style name="AudioTittleTextStyleGray" parent="AudioTittleTextStyle">
