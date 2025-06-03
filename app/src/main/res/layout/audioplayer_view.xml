@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?attr/colorPrimary">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/audioBack"
@@ -32,7 +33,7 @@
         app:layout_constraintStart_toEndOf="@+id/leftBorder"
         app:layout_constraintEnd_toStartOf="@+id/rightBorder"
         app:layout_constraintTop_toBottomOf="@id/audioBack"
-        />
+        android:backgroundTint="?attr/colorPrimary"/>
 
     <TextView
         android:id="@+id/audioTrackTittle"
@@ -42,6 +43,8 @@
         android:layout_marginTop="@dimen/layout_margin2"
         android:gravity="start"
         android:textSize="@dimen/text_size"
+        android:maxLines="1"
+        android:ellipsize="end"
         app:layout_constraintTop_toBottomOf="@+id/audioCoverButton"
         app:layout_constraintStart_toEndOf="@+id/leftBorder"
         app:layout_constraintEnd_toStartOf="@+id/rightBorder"
@@ -53,6 +56,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/layout_margin3"
+        android:maxLines="1"
+        android:ellipsize="end"
         android:gravity="start"
         android:textSize="@dimen/edit_text_size"
         app:layout_constraintTop_toBottomOf="@+id/audioTrackTittle"
@@ -82,7 +87,7 @@
         app:layout_constraintTop_toBottomOf="@id/audioArtistName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/play" />
+        style="@style/ButtonPlay" />
 
     <ImageButton
         android:id="@+id/like_track"
@@ -132,6 +137,7 @@
         app:layout_constraintTop_toBottomOf="@id/trackTime"
         app:layout_constraintStart_toStartOf="@id/leftBorderText"
         app:layout_constraintEnd_toStartOf="@id/timeValue"
+        android:text="@string/duration_track_name"
         />
 
     <TextView
@@ -155,6 +161,7 @@
         app:layout_constraintTop_toBottomOf="@id/timeTittle"
         app:layout_constraintStart_toStartOf="@id/leftBorderText"
         app:layout_constraintEnd_toStartOf="@id/albumValue"
+        android:text="@string/album_track_name"
         />
 
     <TextView
@@ -177,7 +184,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/albumTittle"
         app:layout_constraintStart_toStartOf="@id/leftBorderText"
-        app:layout_constraintEnd_toStartOf="@id/timeValue"
+        app:layout_constraintEnd_toStartOf="@id/yearValue"
+        android:text="@string/year_track_name"
         />
 
     <TextView
@@ -200,7 +208,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/yearTittle"
         app:layout_constraintStart_toStartOf="@id/leftBorderText"
-        app:layout_constraintEnd_toStartOf="@id/timeValue"
+        app:layout_constraintEnd_toStartOf="@id/genreValue"
+        android:text="@string/genre_track_name"
         />
 
     <TextView
@@ -223,7 +232,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/genreTittle"
         app:layout_constraintStart_toStartOf="@id/leftBorderText"
-        app:layout_constraintEnd_toStartOf="@id/timeValue"
+        app:layout_constraintEnd_toStartOf="@id/countryValue"
+        android:text="@string/country_track_name"
         />
 
     <TextView

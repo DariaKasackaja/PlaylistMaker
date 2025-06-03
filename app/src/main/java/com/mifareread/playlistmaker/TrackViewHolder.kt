@@ -27,14 +27,7 @@ class TrackViewHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
                 .into(cover)
 
         trackTittle.text = track.trackName
-        val time = if(track.trackTimeMillis.isNullOrEmpty()){
-            ""
-        }
-        else{   SimpleDateFormat("mm:ss", Locale.getDefault())
-                        .format(track.trackTimeMillis.toInt())
-        }
-
-        trackTime.text =  time
+        trackTime.text =  track.getTimeFormat()
         trackArtist.text = track.artistName
 
     }

@@ -216,7 +216,7 @@ class SearchActivity:AppCompatActivity() {
 
     private fun startAudioplayer( track: Track ){
         val intent = Intent(this, AudioplayerActivity::class.java)
-        intent.putExtra("url", track.artworkUrl100)
+        intent.putExtra("track", track)
         startActivity(intent)
     }
 
