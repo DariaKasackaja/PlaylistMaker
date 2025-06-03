@@ -8,8 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.android.material.appbar.MaterialToolbar
-import java.text.SimpleDateFormat
-import java.util.Locale
+
 
 
 class AudioplayerActivity: AppCompatActivity() {
@@ -51,7 +50,7 @@ class AudioplayerActivity: AppCompatActivity() {
 
             albumValueTextView.text = track.trackName
             countryValueTextView.text = track.country
-            yearValueTextView.text = track.releaseDate.substring(0,4)
+            yearValueTextView.text = track.getYear()
             genreValueTextView.text = track.primaryGenreName
 
             timeValueTextView.text = track.getTimeFormat()

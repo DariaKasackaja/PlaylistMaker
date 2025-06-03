@@ -3,7 +3,6 @@ package com.mifareread.playlistmaker
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.os.Bundle
 import android.text.Editable
@@ -20,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import retrofit2.Call
 import retrofit2.Callback
@@ -32,7 +32,7 @@ class SearchActivity:AppCompatActivity() {
     private var searchString:String = STRING_DEF
     private val itunesBaseUrl = "https://itunes.apple.com"
 
-    private val retrofit = Retrofit
+     private val retrofit = Retrofit
         .Builder()
         .baseUrl(itunesBaseUrl)
         .addConverterFactory(GsonConverterFactory.create())

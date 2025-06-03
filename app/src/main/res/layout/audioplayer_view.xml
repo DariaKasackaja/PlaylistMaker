@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
-    android:background="?attr/colorPrimary">
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="?attr/colorPrimary"
+    android:orientation="vertical">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/audioBack"
         style="@style/ToolbarBack"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/colorPrimary">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/leftBorder"
@@ -32,7 +41,7 @@
         app:layout_constraintDimensionRatio="h,1:1"
         app:layout_constraintStart_toEndOf="@+id/leftBorder"
         app:layout_constraintEnd_toStartOf="@+id/rightBorder"
-        app:layout_constraintTop_toBottomOf="@id/audioBack"
+        app:layout_constraintTop_toTopOf="parent"
         android:backgroundTint="?attr/colorPrimary"/>
 
     <TextView
@@ -254,5 +263,6 @@
         android:layout_height="wrap_content"
         app:constraint_referenced_tags="timeTag, albumTag, yearTag, genreTag, countryTag"
         app:barrierDirection="end" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</LinearLayout>

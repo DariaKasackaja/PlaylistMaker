@@ -3,6 +3,7 @@ package com.mifareread.playlistmaker
 import android.os.Parcel
 import android.os.Parcelable
 import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Locale
 
 data class Track(val trackId: Int,
@@ -11,7 +12,7 @@ data class Track(val trackId: Int,
                  val trackTimeMillis: String, // Продолжительность трека
                  val artworkUrl100: String,// Ссылка на изображение обложки
                  val collectionName: String,
-                 val releaseDate: String,
+                 private var releaseDate: String,
                  val primaryGenreName:String,
                  val country:String)  :  Parcelable {
 
@@ -58,6 +59,19 @@ data class Track(val trackId: Int,
         return if(this.trackTimeMillis.isNullOrEmpty()){ "00:00" }
         else{   SimpleDateFormat("mm:ss", Locale.getDefault())
             .format(this.trackTimeMillis.toInt())
+        }
+    }
+
+    fun getYear() : String{
+        val format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
+        val date: Date?
+        return if( this.releaseDate.isNullOrEmpty() ) { "" }
+        else{
+            try{
+                date = format.parse(this.releaseDate)
+                SimpleDateFormat("YYYY", Locale.getDefault()).format(date!!)
+            }
+            catch (e:Exception){ "" }
         }
     }
 

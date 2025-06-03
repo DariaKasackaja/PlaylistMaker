@@ -1,9 +1,6 @@
 package com.mifareread.playlistmaker
 
 import android.app.Application
-import android.content.SharedPreferences
-import android.util.TypedValue
-import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
 
 const val PLAYLIST_PREFERENCES = "playlist_preferences"
@@ -33,12 +30,5 @@ class App : Application() {
         sharedPreferences.edit()
             .putBoolean(SWITCH_THEME_KEY, darkTheme)
             .apply()
-    }
-
-    fun dpToPx(dp: Float, context: View): Int {
-        return TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            dp,
-            context.resources.displayMetrics).toInt()
     }
 }
