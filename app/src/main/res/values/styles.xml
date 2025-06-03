@@ -91,7 +91,7 @@
         <item name="tint">@color/yp_gray</item>
     </style>
 
-    <style name="PlaceholderTextStyle">
+    <style name="PrimaryTextStyle">
         <item name="android:text">@color/yp_black</item>
         <item name="android:fontFamily">@font/ys_display_medium</item>
         <item name="android:textSize">@dimen/text_setting_size</item>
@@ -119,6 +119,23 @@
         <item name="android:textAllCaps">false</item>
         <item name="cornerRadius">@dimen/radius_oval_button</item>
         <item name="android:fontFamily">@font/ys_display_medium</item>
+    </style>
+
+    <style name="AudioTittleTextStyle">
+        <item name="android:fontFamily">@font/ys_display_regular</item>
+        <item name="android:textSize">@dimen/little_text_size</item>
+        <item name="android:text">TEST TEXT</item>
+        <item name="layout_constraintWidth_default">spread</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="AudioTittleTextStyleGray" parent="AudioTittleTextStyle">
+        <item name="android:textColor">@color/yp_gray</item>
+    </style>
+
+    <style name="AudioTittleTextStyleBlack" parent="AudioTittleTextStyle">
+        <item name="android:textColor">@color/yp_black</item>
     </style>
 
 </resources>

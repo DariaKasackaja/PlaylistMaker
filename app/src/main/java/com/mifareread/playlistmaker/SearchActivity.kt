@@ -2,6 +2,7 @@ package com.mifareread.playlistmaker
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.os.Bundle
@@ -50,7 +51,9 @@ class SearchActivity:AppCompatActivity() {
         selectTrack( it )
     }
 
-    private val adapterSelectTracks = TracksSelectedAdapter()
+    private val adapterSelectTracks = TracksSelectedAdapter {
+        startAudioplayer(it)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -208,7 +211,13 @@ class SearchActivity:AppCompatActivity() {
            .putString(SEARCH_HISTORY_KEY, createJsonFromTracks(selectTracks))
            .apply()
 
+        startAudioplayer( track )
+    }
 
+    private fun startAudioplayer( track: Track ){
+        val intent = Intent(this, AudioplayerActivity::class.java)
+        intent.putExtra("url", track.artworkUrl100)
+        startActivity(intent)
     }
 
     private fun createJsonFromTracks( listTacks: MutableList<Track>) : String{
