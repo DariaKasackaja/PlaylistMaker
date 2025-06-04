@@ -3,8 +3,9 @@ package com.mifareread.playlistmaker
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.mifareread.playlistmaker.TracksAdapter.TrackClickListener
 
-class TracksSelectedAdapter(): RecyclerView.Adapter<TrackViewHolder>(){
+class TracksSelectedAdapter(private val trackSelectedItemClickListener: TrackSelectedClickListener): RecyclerView.Adapter<TrackViewHolder>() {
 
     var tracks = mutableListOf<Track>()
 
@@ -19,5 +20,12 @@ class TracksSelectedAdapter(): RecyclerView.Adapter<TrackViewHolder>(){
 
     override fun onBindViewHolder(holder: TrackViewHolder, position: Int) {
         holder.bind(tracks[position])
+        holder.itemView.setOnClickListener {
+            trackSelectedItemClickListener.onTrackSelectedClick( tracks[ holder.adapterPosition ] )
+        }
+    }
+
+    fun interface TrackSelectedClickListener {
+        fun onTrackSelectedClick(track: Track)
     }
 }

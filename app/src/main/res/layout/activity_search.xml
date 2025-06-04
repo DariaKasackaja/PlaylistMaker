@@ -76,7 +76,7 @@
                 android:visibility="gone"/>
 
             <TextView
-                style="@style/PlaceholderTextStyle"
+                style="@style/PrimaryTextStyle"
                 android:id="@+id/placeholder_text"
                 android:layout_marginTop="@dimen/layout_margin"
                 android:layout_marginStart="@dimen/layout_margin2"
@@ -104,7 +104,7 @@
             android:visibility="gone">
 
             <TextView
-                style="@style/PlaceholderTextStyle"
+                style="@style/PrimaryTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/search_history_tittle"
